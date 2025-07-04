@@ -1,0 +1,39 @@
+import pandas as pd
+from fpdf import FPDF
+
+#  Analyze the data
+def analyze_data(df):
+    summary = {}
+    summary['Total Rows'] = len(df)
+    numeric_cols = df.select_dtypes(include='number').columns
+    for col in numeric_cols:
+        summary[f'Mean of {col}'] = round(df[col].mean(), 2)
+        summary[f'Min of {col}'] = round(df[col].min(), 2)
+        summary[f'Max of {col}'] = round(df[col].max(), 2)
+    return summary
+
+# Generate the PDF
+def generate_pdf_report(summary, filename='report.pdf'):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", 'B', 16)
+    pdf.cell(0, 10, "Automated Data Report", ln=True, align='C')
+
+    pdf.set_font("Arial", '', 12)
+    pdf.ln(10)
+
+    for key, value in summary.items():
+        pdf.cell(0, 10, f"{key}: {value}", ln=True)
+
+    pdf.output(filename)
+    print(f"✅ Report saved as {filename}")
+
+#  Main function
+def main():
+    df = pd.read_csv('task2_sample_data.csv')  # Make sure this file exists in same folder
+    summary = analyze_data(df)
+    generate_pdf_report(summary)
+
+# Run the program
+if __name__ == "__main__":
+    main()
