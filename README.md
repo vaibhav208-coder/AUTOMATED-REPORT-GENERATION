@@ -68,5 +68,6 @@ Schedule automatic report generation using a cron job or a task scheduler
 
 Output:-   
 
+ ![Screenshot 2025-07-04 222803](https://github.com/user-attachments/assets/14e3c4ff-fc60-4e80-909d-6a92e9f9fcd8)
 
-        ![image](https://github.com/user-attachments/assets/fcfcff77-494b-4236-8e34-e45b4bc6a246)
+[report.pdf](https://github.com/user-attachments/files/21064111/report.pdf)
